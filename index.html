@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4e6">
+  <title>Mystery Shop — The Secret of Hidden Prices</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Mystery Shop beranda">
+      <span class="brand-icon">🛍️</span>
+      <span>MYSTERY<span class="brand-accent">SHOP</span><small>THE SECRET OF HIDDEN PRICES</small></span>
+    </a>
+    <div class="top-status">
+      <span class="status-pill">📚 SPLDV Adventure</span>
+      <span class="score-pill">⭐ <b id="headerScore">0</b> poin</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="welcomeScreen" class="screen welcome-screen active">
+      <div class="welcome-copy">
+        <span class="eyebrow">GAME EDUKASI MATEMATIKA</span>
+        <h1>Temukan harga,<br><span>pecahkan misterinya!</span></h1>
+        <p>Ikuti Miko menjelajahi supermarket. Pecahkan dua persamaan, temukan titik potong di GeoGebra, lalu buka label harga yang tersembunyi.</p>
+        <div class="welcome-features">
+          <span>🧮 Belajar SPLDV</span><span>📈 GeoGebra</span><span>🙋 Main bareng satu kelas</span>
+        </div>
+        <div class="start-panel">
+          <label>Mode demonstrasi kelas</label>
+          <div class="start-row">
+            <button class="btn btn-primary" id="startBtn">Mulai bermain <span>→</span></button>
+          </div>
+          <small>Layarkan ke proyektor. Satu orang mengetik di GeoGebra, yang lain menebak dan menjawab bareng-bareng!</small>
+        </div>
+      </div>
+      <div class="welcome-art">
+        <div class="sun-shape"></div>
+        <div class="floating f1">✦</div><div class="floating f2">?</div><div class="floating f3">⭐</div>
+        <div class="shop-sign">MYSTERY<br><b>SHOP</b></div>
+        <div class="character-card">
+          <div class="miko">🧑🏻‍🦱</div>
+          <div class="miko-bubble">Hai! Aku Miko.<br>Bantu aku mencari harga, yuk!</div>
+        </div>
+        <div class="basket-art">🛒</div>
+        <div class="art-caption">Your shopping adventure starts here!</div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-heading">
+        <div><span class="eyebrow">SELAMAT DATANG DI MYSTERY SHOP</span><h2>Halo, semuanya! 👋</h2><p>Bantu Miko membuka semua label harga bersama-sama.</p></div>
+        <div class="progress-card"><div class="progress-top"><span>Progress misi</span><b id="progressText">0/3 selesai</b></div><div class="progress-track"><div id="progressBar"></div></div></div>
+      </div>
+
+      <div class="game-layout">
+        <aside class="sidebar">
+          <div class="miko-mini"><span>🧑🏻‍🦱</span><div><b>Miko</b><small>Asisten belanja kita</small></div></div>
+          <div class="score-box"><small>SKOR KELAS</small><strong><span id="sideScore">0</span><em> pts</em></strong><span class="score-note">Kumpulkan poin di setiap misi!</span></div>
+          <h3>Peta toko</h3>
+          <button class="map-item selected" data-level="1"><span class="map-emoji">✏️</span><span><b>Stationery Shop</b><small>Misi 1 · Alat tulis</small></span><i id="status1">●</i></button>
+          <button class="map-item locked" data-level="2"><span class="map-emoji">🍎</span><span><b>Fruit Shop</b><small>Misi 2 · Buah-buahan</small></span><i id="status2">🔒</i></button>
+          <button class="map-item locked" data-level="3"><span class="map-emoji">🧾</span><span><b>Checkout Counter</b><small>Misi 3 · Kasir</small></span><i id="status3">🔒</i></button>
+          <div class="sidebar-tip">💡 <b>Tips Miko</b><br>Tebak dulu bareng-bareng persamaannya dari struk, baru buka petunjuk model matematika.</div>
+        </aside>
+
+        <section class="mission-area">
+          <div class="mission-banner" id="missionBanner">
+            <div><span class="level-tag">LEVEL 1 · MUDAH</span><h2>Stationery Shop</h2><p>Label harga alat tulis menghilang. Bantu Miko menemukannya!</p></div>
+            <div class="banner-emoji">✏️📒</div>
+          </div>
+
+          <div id="level1Panel" class="level-panel">
+            <div class="mission-grid">
+              <div class="transaction-card">
+                <div class="section-label">📩 BUKTI TRANSAKSI</div>
+                <p>Pemilik toko memberikan dua struk belanja:</p>
+                <div class="receipt"><span>TRANSAKSI #001</span><div>✏️ ✏️ + 📒</div><strong>Rp16.000</strong></div>
+                <div class="receipt"><span>TRANSAKSI #002</span><div>✏️ + 📒 📒</div><strong>Rp14.000</strong></div>
+                <div class="unknown-price"><span>Harga pensil</span><b>Rp ???</b><span>Harga buku</span><b>Rp ???</b></div>
+              </div>
+              <div class="task-card">
+                <div class="section-label">🕵️ TUGAS KELAS</div>
+                <p>Misalkan <b>x</b> adalah harga pensil dan <b>y</b> adalah harga buku (dalam ribuan rupiah).</p>
+                <div class="model-placeholder"><b>🤔 Coba tebak bareng-bareng:</b> bagaimana model matematika dari kedua struk di samping?</div>
+                <div class="equation-box model-secret hidden"><span>Model matematika:</span><b>2x + y = 16</b><b>x + 2y = 14</b></div>
+                <button class="btn btn-soft reveal-btn" data-level="1">💡 Tampilkan model matematika</button>
+                <p class="task-instruction">Temukan nilai x dan y menggunakan grafik GeoGebra.</p>
+                <div class="input-pair">
+                  <label>Harga pensil (x)<div class="input-unit"><input id="l1x" type="number" min="0" placeholder="...?"><span>ribu</span></div></label>
+                  <label>Harga buku (y)<div class="input-unit"><input id="l1y" type="number" min="0" placeholder="...?"><span>ribu</span></div></label>
+                </div>
+                <button class="btn btn-primary full" id="check1">Periksa jawaban <span>✓</span></button>
+                <div class="feedback" id="feedback1" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="geogebra-card">
+              <div class="geo-head"><div><span class="geo-icon">📈</span><div><b>GeoGebra Investigation</b><small>Visualisasikan dua persamaan linear</small></div></div><span class="embed-label">EMBED</span></div>
+              <div class="geo-instructions">
+                <b>Ketik persamaan ke kolom input GeoGebra:</b>
+                <p class="model-placeholder">Persamaan akan muncul di sini setelah model matematika ditampilkan. Atau ketik sendiri hasil tebakan kelas!</p>
+                <div class="model-secret hidden">
+                  <div class="copy-row"><code>2x + y = 16</code><button class="copy-btn" data-copy="2x + y = 16">Salin</button></div>
+                  <div class="copy-row"><code>x + 2y = 14</code><button class="copy-btn" data-copy="x + 2y = 14">Salin</button></div>
+                </div>
+                <p>Gunakan alat <b>Intersect / Perpotongan</b> atau klik titik perpotongan kedua garis. Catat koordinatnya, lalu masukkan ke kolom jawaban.</p>
+              </div>
+              <div class="iframe-wrap"><iframe id="geo1" title="GeoGebra Graphing Calculator" data-src="https://www.geogebra.org/graphing?embed" allowfullscreen></iframe></div>
+              <div class="geo-fallback">Jika GeoGebra tidak tampil karena koneksi atau pembatasan browser, <a href="https://www.geogebra.org/graphing" target="_blank" rel="noopener">buka GeoGebra di tab baru</a>.</div>
+            </div>
+          </div>
+
+          <div id="level2Panel" class="level-panel hidden">
+            <div class="mission-grid">
+              <div class="transaction-card">
+                <div class="section-label">📩 BUKTI TRANSAKSI</div>
+                <p>Miko berpindah ke toko buah. Ada dua struk yang belum diketahui harga satuannya:</p>
+                <div class="receipt"><span>TRANSAKSI #003</span><div>🍎 🍎 🍎 + 🍊 🍊</div><strong>Rp23.000</strong></div>
+                <div class="receipt"><span>TRANSAKSI #004</span><div>🍎 + 🍊</div><strong>Rp9.000</strong></div>
+                <div class="unknown-price"><span>Harga apel</span><b>Rp ???</b><span>Harga jeruk</span><b>Rp ???</b></div>
+              </div>
+              <div class="task-card">
+                <div class="section-label">🕵️ TUGAS KELAS</div>
+                <p>Misalkan <b>x</b> adalah harga apel dan <b>y</b> adalah harga jeruk (dalam ribuan rupiah).</p>
+                <div class="model-placeholder"><b>🤔 Giliran kelas menebak:</b> tulis dulu model matematikanya sebelum melihat petunjuk!</div>
+                <div class="equation-box model-secret hidden"><span>Model matematika:</span><b>3x + 2y = 23</b><b>x + y = 9</b></div>
+                <button class="btn btn-soft reveal-btn" data-level="2">💡 Tampilkan model matematika</button>
+                <p class="task-instruction">Gunakan GeoGebra untuk menemukan titik potong kedua garis.</p>
+                <div class="input-pair">
+                  <label>Harga apel (x)<div class="input-unit"><input id="l2x" type="number" min="0" placeholder="...?"><span>ribu</span></div></label>
+                  <label>Harga jeruk (y)<div class="input-unit"><input id="l2y" type="number" min="0" placeholder="...?"><span>ribu</span></div></label>
+                </div>
+                <button class="btn btn-primary full" id="check2">Periksa jawaban <span>✓</span></button>
+                <div class="feedback" id="feedback2" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="geogebra-card">
+              <div class="geo-head"><div><span class="geo-icon">📈</span><div><b>GeoGebra Investigation</b><small>Eksplorasi grafik Level 2</small></div></div><span class="embed-label">EMBED</span></div>
+              <div class="geo-instructions">
+                <b>Ketik persamaan ke kolom input GeoGebra:</b>
+                <p class="model-placeholder">Persamaan akan muncul di sini setelah model matematika ditampilkan.</p>
+                <div class="model-secret hidden">
+                  <div class="copy-row"><code>3x + 2y = 23</code><button class="copy-btn" data-copy="3x + 2y = 23">Salin</button></div>
+                  <div class="copy-row"><code>x + y = 9</code><button class="copy-btn" data-copy="x + y = 9">Salin</button></div>
+                </div>
+                <p>Temukan titik potongnya. Ingat, koordinat x dan y menunjukkan harga apel dan jeruk dalam ribuan rupiah.</p>
+              </div>
+              <div class="iframe-wrap"><iframe id="geo2" title="GeoGebra Graphing Calculator Level 2" data-src="https://www.geogebra.org/graphing?embed" allowfullscreen></iframe></div>
+              <div class="geo-fallback">Jika GeoGebra tidak tampil, <a href="https://www.geogebra.org/graphing" target="_blank" rel="noopener">buka GeoGebra di tab baru</a>.</div>
+            </div>
+          </div>
+
+          <div id="level3Panel" class="level-panel hidden">
+            <div class="final-card">
+              <div class="final-illustration">🛒✨</div>
+              <span class="level-tag">FINAL MISSION</span>
+              <h2>Checkout Counter</h2>
+              <p>Miko sudah menemukan semua harga! Sekarang bantu Miko menghitung total belanjanya. Masih ingat harga tiap barang tadi?</p>
+              <div class="basket-list"><div><span>✏️ Pensil</span><b>3 buah</b></div><div><span>📒 Buku</span><b>2 buah</b></div><div><span>🍎 Apel</span><b>2 buah</b></div><div><span>🍊 Jeruk</span><b>3 buah</b></div></div>
+              <button class="btn btn-soft" id="notesBtn">📒 Buka catatan harga Miko</button>
+              <div class="price-notes hidden" id="priceNotes"><b>Catatan harga Miko</b><div><span>✏️ Pensil</span><b>Rp6.000</b></div><div><span>📒 Buku</span><b>Rp4.000</b></div><div><span>🍎 Apel</span><b>Rp5.000</b></div><div><span>🍊 Jeruk</span><b>Rp4.000</b></div></div>
+              <div class="total-question"><span>Berapakah total belanja Miko?</span><div class="input-unit total-input"><span>Rp</span><input id="finalAnswer" type="number" min="0" placeholder="Masukkan total"><span>rupiah</span></div></div>
+              <button class="btn btn-primary" id="checkFinal">Selesaikan checkout ✓</button>
+              <div class="feedback" id="feedbackFinal" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="bottom-nav"><button id="backToMap" class="btn btn-soft">← Peta toko</button><span id="levelHint">Selesaikan misi untuk membuka toko berikutnya.</span></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="completeScreen" class="screen complete-screen">
+      <div class="confetti" aria-hidden="true">✦　✧　⭐　✦　✧　⭐　✦</div>
+      <div class="complete-icon">🏆</div>
+      <span class="eyebrow">MISSION ACCOMPLISHED</span>
+      <h1>Kerja bagus, <span>semuanya</span>!</h1>
+      <p>Kita berhasil membantu Miko menemukan semua harga dan menyelesaikan transaksi.</p>
+      <div class="final-score"><small>TOTAL SKOR KELAS</small><strong id="finalScore">300</strong><span>POIN</span></div>
+      <div class="learning-summary"><h3>📚 Apa yang sudah dipelajari?</h3><p>✓ Mengubah masalah sehari-hari menjadi model SPLDV.</p><p>✓ Menggambar dua persamaan linear menggunakan GeoGebra.</p><p>✓ Menentukan solusi melalui titik potong dua garis.</p><p>✓ Menggunakan solusi untuk menyelesaikan masalah kontekstual.</p></div>
+      <button class="btn btn-primary" id="restartBtn">Main lagi ↻</button>
+    </section>
+  </main>
+
+  <footer><span>🛍️ Mystery Shop</span><span>Belajar SPLDV jadi lebih seru!</span></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
